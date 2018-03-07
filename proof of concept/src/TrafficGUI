@@ -1,0 +1,104 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Color;
+import javax.swing.UIManager;
+import javax.swing.JTable;
+import javax.swing.JButton;
+import javax.swing.border.TitledBorder;
+import javax.swing.JTextArea;
+import javax.swing.JSlider;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.SwingConstants;
+
+public class TrafficGUI extends JFrame {
+
+	private JPanel contentPane;
+	private JTable table;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					TrafficGUI frame = new TrafficGUI();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public TrafficGUI() {
+		setTitle("NADS P.O.C.");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 639, 364);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		table = new JTable();
+		table.setRowHeight(20);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{"", null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+			},
+			new String[] {
+				"Object", "Collision"
+			}
+		));
+		table.setCellSelectionEnabled(true);
+		table.setColumnSelectionAllowed(true);
+		table.setBounds(381, 41, 223, 220);
+		contentPane.add(table);
+		
+		JButton btnLoad = new JButton("Load File");
+		btnLoad.setBounds(411, 291, 89, 23);
+		contentPane.add(btnLoad);
+		
+		JButton btnPlaypause = new JButton("Play/Pause");
+		btnPlaypause.setBounds(515, 291, 89, 23);
+		contentPane.add(btnPlaypause);
+		
+		JTextArea txtrVideoPlaceholder = new JTextArea();
+		txtrVideoPlaceholder.setText("Video Feed (Placeholder)");
+		txtrVideoPlaceholder.setBounds(10, 15, 348, 228);
+		contentPane.add(txtrVideoPlaceholder);
+		
+		JLabel lblNewLabel = new JLabel("Object");
+		lblNewLabel.setOpaque(true);
+		lblNewLabel.setBackground(Color.WHITE);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(381, 16, 111, 23);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblCollision = new JLabel("Collision");
+		lblCollision.setOpaque(true);
+		lblCollision.setBackground(Color.WHITE);
+		lblCollision.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCollision.setBounds(493, 16, 111, 23);
+		contentPane.add(lblCollision);
+	}
+}
